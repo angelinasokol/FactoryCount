@@ -27,14 +27,14 @@ class MainActivity : AppCompatActivity() {
             return@setOnClickListener
             }
         }
-
-        private fun calculateFactorial(intInput : Int): BigInteger {
-            var result = BigInteger.ONE
-            for (i in 2..intInput) {
-                result = result.multiply(BigInteger.valueOf(i.toLong()))
-            }
-            return result
+    fun calculateFactorial(intInput : Int): BigInteger {
+        var result = BigInteger.ONE
+        for (i in 2..intInput) {
+            result = result.multiply(BigInteger.valueOf(i.toLong()))
         }
+        return result
+        }
+
         }
 
     }
