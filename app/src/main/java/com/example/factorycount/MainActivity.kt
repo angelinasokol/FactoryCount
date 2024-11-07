@@ -22,20 +22,36 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             val intInput = calculateN.text.toString().toIntOrNull()
 
-            if (intInput == null || intInput < 1)   {
-            viewOutput.text = "ОШИБКА!!Введите натуральное число"
-            return@setOnClickListener
+            if (intInput == null || intInput < 1) {
+                viewOutput.text = "ОШИБКА!!Введите натуральное число"
+                return@setOnClickListener
             }
+            val factorial = calculateFactorial(intInput)
+            val result = factorialVerification((factorial))
         }
-    fun calculateFactorial(intInput : Int): BigInteger {
+    }
+    private fun calculateFactorial(intInput : Int): BigInteger {
         var result = BigInteger.ONE
         for (i in 2..intInput) {
             result = result.multiply(BigInteger.valueOf(i.toLong()))
         }
         return result
-        }
-
-        }
-
     }
+
+    private fun factorialVerification(factorial: BigInteger): Boolean {
+        var k = BigInteger.ONE
+        while(true) {
+            val product = k * (k+BigInteger.ONE) * (k+BigInteger.TWO)
+            if (product == factorial) {
+                return true
+            }
+            if(product > factorial){
+                return false
+            }
+            k+= BigInteger.ONE
+        }
+    }
+
+
+
 }
