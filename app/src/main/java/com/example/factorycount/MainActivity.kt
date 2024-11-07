@@ -29,10 +29,10 @@ class MainActivity : AppCompatActivity() {
             val factorial = calculateFactorial(intInput)
             val result = factorialVerification((factorial))
 
-            if (result) {
-                println("Можно представить в виде произведения трех последовательных чисел! :)")
+            viewOutput.text = if (result) {
+                "$intInput! можно представить в виде произведения трех последовательных чисел! :)"
             } else {
-                println("Нельзя представить в виде произведения трех последовательных чисел! :(")
+                "$intInput! нельзя представить в виде произведения трех последовательных чисел! :("
             }
         }
     }
