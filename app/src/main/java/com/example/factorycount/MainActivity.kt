@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import java.math.BigInteger
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,11 +20,20 @@ class MainActivity : AppCompatActivity() {
         val calculateN: EditText = findViewById(R.id.calculateN)
 
         button.setOnClickListener {
-        val intInput = calculateN.text.toString().toIntOrNull()
+            val intInput = calculateN.text.toString().toIntOrNull()
 
-        if (intInput == null || intInput < 1)   {
+            if (intInput == null || intInput < 1)   {
             viewOutput.text = "ОШИБКА!!Введите натуральное число"
             return@setOnClickListener
+            }
+        }
+
+        private fun calculateFactorial(intInput : Int): BigInteger {
+            var result = BigInteger.ONE
+            for (i in 2..intInput) {
+                result = result.multiply(BigInteger.valueOf(i.toLong()))
+            }
+            return result
         }
         }
 
