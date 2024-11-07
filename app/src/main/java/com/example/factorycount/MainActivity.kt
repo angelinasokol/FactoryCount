@@ -13,10 +13,19 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val viewOutput: TextView = findViewById(R.id.viewOutput)
+        val button: Button = findViewById(R.id.button)
+        val calculateN: EditText = findViewById(R.id.calculateN)
+
+        button.setOnClickListener {
+        val intInput = calculateN.text.toString().toIntOrNull()
+
+        if (intInput == null || intInput < 1)   {
+            viewOutput.text = "ОШИБКА!!Введите натуральное число"
+            return@setOnClickListener
+        }
+        }
+
     }
-    val viewOutput: TextView = findViewById(R.id.viewOutput)
-    val button: Button = findViewById(R.id.button)
-    val calculateN: EditText = findViewById(R.id.calculateN)
-
-
 }
